@@ -1,0 +1,2 @@
+RTC:    real-time-clock
+PLL:    phase-locked-loop

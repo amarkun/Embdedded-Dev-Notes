@@ -1,2 +1,88 @@
-RTC:    real-time-clock
-PLL:    phase-locked-loop
+NOTE: Nearly all definitions are taken from wikipedia. Lines if MES are taken from O'RIELLY's "Making Embedded Systems" written by Elicia White
+NOTE: * designates that the acronym may be used for other relevant meanings that is known
+
+BJT = Bipolar junction transistor
+	- a type of transistor that uses both electron and hole charge carriers (FET use only one type of charge carrier
+	- use two conjuncitions between to semiconductor types, n-type and p-type
+	- main functionality is to amplify signals; can be used as amplifiers or switches
+CAN = Controller Area Network
+	- robust vehicle bus designed to allow microcontrollers to communicate with each other in applications without a host computer
+CISC = Commples Instruction Set Computer
+	- a computer in which single instructions can execute several low-level opperations (load from memory, arithmetic, memory store) or are capable of multi-step operations or addressing modes with single instructions.
+	- coined in contract to RISC
+CMOS = Complementary metal-oxide-semiconductor
+	- a technology for constructing integrated circuits
+	- high noise immunity and low static power consumption (only uses significant power duirng on/off switching)
+	- allows high density of logic functions on a chip
+Dhrystone
+	- a synthetic computing benchmark program representative of general processory (CPU) performance
+	- developed in 1984 intended to be representative of system (integer) programming
+DMIPS = Dhrystone MIPS (Million Instructions per Second)
+	- a measure of computer performance relative to the performance of the DEC VAX 11/780 minicomputer of the 1970s
+DRAM - Dynamic Random-Access Memory
+	- a type of random access semiconductor memory that stores each bit of data is a separate tiny capacitory within an integrated circuit
+	- capacitor can be charged or discharged to represent the two states of a bit
+	- requires memory refresh as the charge of the capacitors slowly leaks off
+	- exhibits data remanence, but is volatile
+	- slower and less expensive than SRAM
+	- used for a computer's main memory
+DSP = Digitla Signal Processor
+	- a specialized microprocessor ( or a SIP block) with architecture optimized for the operational needs of digital signal processing
+	- usually used to measure, filter, or compress real world-analog signals
+	- often a challenge for general microprocessors to keep up with processing continuously in real-time
+	- usually have better battery power efficiency than general microprocessors
+	- often use special memory architectures to fetch multiple data or instructions simultaneously
+FET = Filed-effect transistor
+	- an electronic device which uses an electric field to control the flow of current
+	- 3-terminalled devices (source, gate, drain)
+	- application of a voltage to the gate terminal alters conductivity between the drain and source terminals
+Flash memory
+	- non-volatile storage
+FSMC = flexible static memory control
+	- used for storing data in a volatile configuration...
+FPU = Floating-point Unit
+	- a math coprocessor that is part of a computer sysmem that is specially designed to carry out operations on floating point numbers
+IC = Integrated Circuit
+	- a set of electronic circuits on one small flat piece (or "chip") of semiconductor material that is normally silicon
+IC power-supply pin
+	- pins used in nearly all ICs that connect to the power rails of the circuit in which they are installe
+ISA = Instruction set architecture
+	- an abstract model of a computer
+	- a realization of an ISA is an implementaion
+MMC = MultiMediaCard
+	- memory card used for solid-state storage
+MMU = Memory Management Unit
+	- aka PMMU = Paged Memroy Management Unit
+	- computer hardware unit having all memory references passed throygh itself
+	- primarily performs the translation of virtual memory addresses to physical addresses
+	- effectively performs memory management while simultaneously handling memory protection, cache control, bus arbitration and, sometimes, bank switching
+MPU* = Memory Protection Unit
+	- a computer hardware unit that provides memory protection
+	- usually implemented as part of the CPU
+	- usually managed by an RTOS
+	- trimmed down version of MMU that only offers memory protection
+	- usually implemented in low power processors that require only memory protection
+PLL = phase-locked-loop
+	- control system that generates and output signal whose phase is related to the phase of an output signal.
+RISC = Reduced instruction set somputer
+	- a computer whose ISA allows it to have fewer cycles per instruction than a CISC
+RTC = real-time-clock
+	- clock that tracks current time
+RTOS = Real-time Operating System
+	- an OS intended to serve real-time applications that process data as it comes in, typically without buffer delays
+SDIO = Secure Digital Input Output
+	- an extention of the SD (a non-volatile memroy card) specificaaiton to cover I/O functions
+SRAM = Static Random-Access Memory
+	- type of semiconductor memory that uses bistable latching circuitry (flip-flop) to store each bit
+	- exhibits data remanence, but is still volatile
+	- opposed to DRAM, which must be periodically refreshed
+	- faster & more expensive than DRAM
+	- typically used for a CPU cache
+USB OTG = USB on-the-go
+	- specification that allows usb devices to operate as hosts for other USB devices
+Vehicle Bus
+	- a specialized internal communications network that interconnects components inside a vehicle
+VDD
+	- a positive IC power-supply pin on field-effect transistor-based integrated circuits
+VSS
+	- a negative IC power-supply pin on field-effect transistor-based integrated circuits	

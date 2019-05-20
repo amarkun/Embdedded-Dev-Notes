@@ -1,5 +1,24 @@
-NOTE: Nearly all definitions are taken from wikipedia. Lines if MES are taken from O'RIELLY's "Making Embedded Systems" written by Elicia White
+These notes were taken while reviewing documentation for the STM32F407 Discovery kit. These notes are comprised of terms unkown to me, which were either used in the data sheets of the board, or in the definitions or such terms. There is a separate section for terms or abbreviations specific to ARM
+
 NOTE: * designates that the acronym may be used for other relevant meanings that is known
+
+ARM Terms
+DMA* = Direct Memory Access controller
+EXTI = External Interrupt/Event Controller
+FSMC = Fixed Static Memory Controller
+IWDG = Independent Watchdog
+LPR = Low-power Regulator
+MR = Main Regulator Mode
+NVIC = Nested Vector Interrupt Controller
+PVD = Programmable Voltage Detector
+
+
+General Terms
+
+NOTE: Nearly all definitions are taken from wikipedia. Lines if MES are taken from O'RIELLY's "Making Embedded Systems" written by Elicia White
+citation: 
+White, Elicia. "Making Embedded Systems." O'Reilly Media, Inc., 2012.
+
 
 ABP = Advanced Peripheral Bus
 	- bus designed for low bandwidth control accesses, for example register interfaces on system peripherals
@@ -33,8 +52,6 @@ D-Bus = Desktop Bus
 Dhrystone
 	- a synthetic computing benchmark program representative of general processory (CPU) performance
 	- developed in 1984 intended to be representative of system (integer) programming
-DMA = Direct Memory Access controller
-	- feature of a computer system that allows certain hardware subsystems to access main system memory (RAM), independent of the CPU
 DMIPS = Dhrystone MIPS (Million Instructions per Second)
 	- a measure of computer performance relative to the performance of the DEC VAX 11/780 minicomputer of the 1970s
 DRAM - Dynamic Random-Access Memory
@@ -56,7 +73,7 @@ FET = Filed-effect transistor
 	- application of a voltage to the gate terminal alters conductivity between the drain and source terminals
 Flash memory
 	- non-volatile storage
-FSMC = flexible static memory control
+	FSMC = flexible static memory control
 	- used for storing data in a volatile configuration...
 FPU = Floating-point Unit
 	- a math coprocessor that is part of a computer sysmem that is specially designed to carry out operations on floating point numbers
@@ -69,6 +86,37 @@ IC power-supply pin
 IPC = Inter-process communication
 	- refers specifically to the mechanisms an OS provides to allow the processes to manage shared data
 	- typically applications can use IPC, categorized as clients and servers, where the client requests and the server responds
+I2C = Inter-integrated circuit Interface aka TWI (Two-wire Interface)
+	- a synchronus, multi-master, multi-slave, packet switched, single-ending, computer serial bus
+	- widely used for attaching two lower-speed ICs to processors and microcontrollers in short-distance, intra-board communication
+	- MES
+		- master that provides clock and starts interaction (similar to SPI)
+		- can have multiple masters and multiple peripherals
+		- master can switch sides, allowing peripheral to control interaction
+		- three connections:
+			+ SCL for clock
+			+ SDL for data (half-duplex: both ways on same wire)
+			+ ground
+		- simple hardware, complex software
+		- own address scheme (moves this to OSI layer 3: Network)
+		- fairly widely used
+		- state machine used to deal with switching direction of communication
+		- communication model:
+			1. Master sensds 7-bit address to indicate read or write from/to slave
+			2. slave sends ACK
+			3. Master sends to/reads from slave
+			4. interaction proceeds
+			...
+			n. master sends stop bit
+		- num components attached limited by address space and bus capacitence
+		- addresses allocated by NXP (company who inveted I2C)
+		- many components allow last few bits of address to be set using pull-ups
+			+ allows several instancces to be put on the same part of the bus
+		- some components have slightly different part numbers, resultingin different I2C addresses
+		- overhead becomes negligable if moving large amounts of data
+		- not usually used for communication to distant peripherals
+			+ could go few meters before degredation
+		- really need 4 wires (2 for communication, usually power and ground)
 ISA = Instruction set architecture
 	- an abstract model of a computer
 	- a realization of an ISA is an implementaion
@@ -109,15 +157,22 @@ PLL = phase-locked-loop
 		- demodulate a signal
 		- recover signal from a noisy communication channel
 		- generate a stable frequency at multiples of an input frequency
-		- distribute precisely timed clock pulses in digital logic circuits such as microprocessors
+		- distribute precisely timed clock pulses in digital logic circuits such as microprocessorsi
+	- MES: "Denotes a way a processor can multiply a slower clock (i.e., a slow oscillator) to get a faster clock ( a processor clock)"
 PoD - Power-down Reset
 	- a microcontroller or microprocessor peripheral that generates a reset signal when power is removed from a device (?)
 PoR = Power-on Reset
 	- a microcontroller or micorprocessor peripheral that generates a reset signal when power is applied to a device
 	- ensures the devices begins operation in a known state
+Prescaler or Prescale Register
+	- an electronic counting circuit used to reduce a high frequency electrical signal to a lower frequency by integer division
+	- MES: "The prescale register, which divides the clock so that the counter increments at a slower rate."
 PSRAM = Pseudostatic RAM
 	- dynamic RAM with built-in refreash and address control circuitry to make it behave similarly to SRAM
 	- combines high density of DRAM with ease of use of SRAM
+PWM = Pulse-width Modulation
+	- method of reducing the average power delivered by an electrical signal, by effectiveyly chopping it up into discrete parts
+	- average voltage (and current) fed to the load is controlled by tunring the switch on/off at a fast rate
 RISC = Reduced instruction set somputer
 	- a computer whose ISA allows it to have fewer cycles per instruction than a CISC
 RC Network = RC Curcuit = RC Filter
@@ -159,4 +214,8 @@ Vehicle Bus
 VDD
 	- a positive IC power-supply pin on field-effect transistor-based integrated circuits
 VSS
-	- a negative IC power-supply pin on field-effect transistor-based integrated circuits	
+	- a negative IC power-supply pin on field-effect transistor-based integrated circuits
+Watchdog Timer
+	- an electronic timer that is used to detect and recover from computer malfunctions
+	- MES: might reset processor if no action is performed (e.g. toogle of an I/O line or register write)
+	- MES: system wil wait for a processor signal that things are going well

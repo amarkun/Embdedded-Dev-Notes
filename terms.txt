@@ -1,3 +1,5 @@
+Not yet spellchecked...
+
 These notes were taken while reviewing documentation for the STM32F407 Discovery kit. These notes are comprised of terms unkown to me, which were either used in the data sheets of the board, or in the definitions or such terms. There is a separate section for terms or abbreviations specific to ARM
 
 NOTE: * designates that the acronym may be used for other relevant meanings that is known
@@ -28,12 +30,35 @@ AHB = Advanced High-performance Bus
 	- large bus widths
 	- simple transaction on AHB = address phase and subsequent data phase (without wait states: only two bus-cycles)
 	- access to target device controlled through MUX (non-tristate), thus admitting bus-access to one bus-master at a time
-BoR - Brownout Reset
-	- a circuit that causes a computer processor to reset (or reboot) in the event of a brownout ( a significant drop in the power supply output voltage)
+Baud
+	- common measure of symbol rate, one of the components that determine the speed of communication over a data channel
+	- symbol rate or modulation rate in symbols per second or pulses per second
+	- related to, but not equivalent to gross bit rate (bits per second)
+		- if symbols are only 0 or 1, then baud is equivalent to bits per second
+Bit-bang
+	- slang for various techniques in which serial communications use software instead of dedicated hardware to process and make use of signals
+	- software directly sets and samples state of pins on a microcontroller
+	- software is responsible for all parameters of the signal: timing, levels, synchronization, etc.
+	- can be implemented at low cost
+	- opposed to dedicated hardware (e.g. modem, UART, shift register) which handles parameters and provides buffered data interface
+		- software not required for demodulation
+	- MES:
+		- can be created for any serial interface
+		- consumes more processing power than abuilt-in processor interface, but is more flexible
 BJT = Bipolar junction transistor
 	- a type of transistor that uses both electron and hole charge carriers (FET use only one type of charge carrier
 	- use two conjuncitions between to semiconductor types, n-type and p-type
 	- main functionality is to amplify signals; can be used as amplifiers or switches
+BoR - Brownout Reset
+	- a circuit that causes a computer processor to reset (or reboot) in the event of a brownout ( a significant drop in the power supply output voltage)
+BSC = Binary Synchronous Communcations
+	- IBM character-oriented, half-duplex link protocol
+	- replaced STR
+	- allowed common link management rules to be used with three character encodings for messages
+		- Six-bit Transcode: looked backwards to older systems
+		- USASCII: 128 characters looked forward
+		- EBCDIC: 256 characters looked forward
+	- Transcode disappeared quickly
 CAN = Controller Area Network
 	- robust vehicle bus designed to allow microcontrollers to communicate with each other in applications without a host computer
 CCM = Core Coupled Memory
@@ -47,6 +72,7 @@ CMOS = Complementary metal-oxide-semiconductor
 	- allows high density of logic functions on a chip
 Compact Flash
 	- flash memory mass storage device used mainly in portable electronic devices
+CTS = Clear to Send
 D-Bus = Desktop Bus
 	- a software bus, and IPC, and an RPC, mechanism that allows communication between multiple processes concurrently running ofn the same macine
 Dhrystone
@@ -71,21 +97,29 @@ FET = Filed-effect transistor
 	- an electronic device which uses an electric field to control the flow of current
 	- 3-terminalled devices (source, gate, drain)
 	- application of a voltage to the gate terminal alters conductivity between the drain and source terminals
+Endec
+	- in electrical communication, this is a device that acts as both and encoder and decoder on a signal or data stream, either with same or separate circuitry or algorithm
 Flash memory
 	- non-volatile storage
 	FSMC = flexible static memory control
 	- used for storing data in a volatile configuration...
+Four-of-Eight code
+	- a 64 character set plus six control characters, encoded in eight bits
+	- exactly four bits of each character were 1 bits
+	- 70 possible bit combinations
 FPU = Floating-point Unit
 	- a math coprocessor that is part of a computer sysmem that is specially designed to carry out operations on floating point numbers
+HDLC = High-level Data Link Control
+	- bit-oriented code-transparent synchronous data link layer protocol developed by ISO
+	- provides connection-oriented and connectionless service
+	- can be used for point-to-multipoint connections via the master-slave modes Normal Response Mode (NRM) and Asynchronous Response Mode (ARM)
+	- now almost exclusively used to connect one device to another using Asynchronous Balanced Mode (ABM)
 I-Bus = IBus = Intelligent Input Bus
 	- an input method frameworkfor multilingual input in Unix-like OSs
 IC = Integrated Circuit
 	- a set of electronic circuits on one small flat piece (or "chip") of semiconductor material that is normally silicon
 IC power-supply pin
 	- pins used in nearly all ICs that connect to the power rails of the circuit in which they are installed
-IPC = Inter-process communication
-	- refers specifically to the mechanisms an OS provides to allow the processes to manage shared data
-	- typically applications can use IPC, categorized as clients and servers, where the client requests and the server responds
 I2C = Inter-integrated circuit Interface aka TWI (Two-wire Interface)
 	- a synchronus, multi-master, multi-slave, packet switched, single-ending, computer serial bus
 	- widely used for attaching two lower-speed ICs to processors and microcontrollers in short-distance, intra-board communication
@@ -117,9 +151,17 @@ I2C = Inter-integrated circuit Interface aka TWI (Two-wire Interface)
 		- not usually used for communication to distant peripherals
 			+ could go few meters before degredation
 		- really need 4 wires (2 for communication, usually power and ground)
+I2S = Inter-integrated Sound or Inter-IC Sound
+	- electrical serial bus interface standard used for connection digitial audio devices together
+IPC = Inter-process communication
+	- refers specifically to the mechanisms an OS provides to allow the processes to manage shared data
+	- typically applications can use IPC, categorized as clients and servers, where the client requests and the server responds
 ISA = Instruction set architecture
 	- an abstract model of a computer
 	- a realization of an ISA is an implementaion
+LIN = Local Interconnect Network
+	- a serial network protocol used for communication between components of a vehicle
+	- cheaper than CAN bus
 MMC = MultiMediaCard
 	- memory card used for solid-state storage
 MMU = Memory Management Unit
@@ -159,6 +201,9 @@ PLL = phase-locked-loop
 		- generate a stable frequency at multiples of an input frequency
 		- distribute precisely timed clock pulses in digital logic circuits such as microprocessorsi
 	- MES: "Denotes a way a processor can multiply a slower clock (i.e., a slow oscillator) to get a faster clock ( a processor clock)"
+PMBus - Power Management Bus
+	- variant of SMBus targeted at digital management of power supplies
+	- slow speed two-wiew communication based on I2C
 PoD - Power-down Reset
 	- a microcontroller or microprocessor peripheral that generates a reset signal when power is removed from a device (?)
 PoR = Power-on Reset
@@ -185,6 +230,7 @@ RPC = Remote Procedure Call
 	- type of client-server interaction typicall implemented via a request-response message-passing system
 RTC = real-time-clock
 	- clock that tracks current time
+RTS = Request To Send
 RTOS = Real-time Operating System
 	- an OS intended to serve real-time applications that process data as it comes in, typically without buffer delays
 S-Bus
@@ -194,14 +240,74 @@ S-Bus
 	- served as input/output bus for remainder of lifetime
 SDIO = Secure Digital Input Output
 	- an extention of the SD (a non-volatile memroy card) specificaaiton to cover I/O functions
+SDLC = Synchronous Data Link Control
+	- layer 2 bit-oriented computer communications protocol for IBM's Systems Network Architecure (SNA)
+	- supports multi-links and error correction
+	- operates independently on each communications link
+	- can operate on/with:
+		- point-to-point multipoint or loop facilities
+		- switched or dedicated, two-wire or four-wire circuits
+		- full-duplex or half-duplex operation
+	- ability to mix half-duplex secondary stations w/ full-duplex primary stations on four-wire circuits => reduce cost of dedicated facilities
+	- runs under assumption of SNA header
+	- use becoming more rare, replaced with IP-based protocols
+SMBus = System Management Bus
+	- single-ended simple two-wire bus for lightweight communication
+	- commonly found in motherboards for communication with power source for ON/OFF instructions
+	- derived from I2C for comms with low-bandwidth devices on a motherboard, esp power related chips
 Software Bus
 	- a software architecture model where a shared communication channel facilitates connections and communication btwn software models
+SPI - Serial Peripheral Interface
+	- a synchronous serial communication interface specification used for short-distance communication, primarily in embedded systems
+	- MES:
+		- four wires connect processor to SPI peripheral
+			+ Master-In Slave Out (MISO) aka Serial Data IN (SDI): Receiver data in
+			+ Master-Out Slave-In (MOSI) saka Serial Data Out (SDO): Transmit for the master
+			+ Clock (SCK, CLK, or SCLK): Generated by the master for both sides of comms
+			+ Chip Select (CS) or Slave Select (SS): one line per peripheral; generated by master; usually active low
+		- "clocking out" = master will need to send to receive, even if it has not command => usually will send 0xFF
+		- only one clock means oscillator does not need to be percise
+		- clock speed = baud rate and no over head = faster transmition than RS-232, comparable to Ethernet
+		- clock speed = whatever processor can clock and particular peripheral can receive
+		- cannot travel far; usually don't leave the board; last less than a meter
+		- driver easier to implement than RS-232
+			- one tricky  part: data on line valid when clock edge rises or falls
+			- data sheet will specify what peripheral wants
+		- often implemented as bit-bang interface
+			- uses I/O lines to do work of comm interface
+			- example outline pg. 169
 SRAM = Static Random-Access Memory
 	- type of semiconductor memory that uses bistable latching circuitry (flip-flop) to store each bit
 	- exhibits data remanence, but is still volatile
 	- opposed to DRAM, which must be periodically refreshed
 	- faster & more expensive than DRAM
 	- typically used for a CPU cache
+STR = Synchronous Transmit-Receive
+	- early IBM character-oriented communication protocol
+	- point-to-point only
+	- employed four-of-eight transmission code
+	- communicated at up to 5100 charcters per second at half-duplex or full-duplex
+UART = Universal Asynchronous Receiver-Transmitter
+	- computer hardware device for asynchronous serial communication
+	- data format and transmission speeds are connfigurable
+	- electric signaling levels and methods are determined by a driver circuit external to the UART
+	- usually an individual (or part of an) IC used for serial communications over a computer of peripheral device serial port
+
+USART = Universal Synchronous and Asynchronous Receiver-Transmitter
+	- type of serial bus that can be programmed to communicate asynchronously or synchronously
+	- in synchronous mode:
+		- transmits data in frames
+		- characters must be provided on time until a frame is complete
+		- "underrun error" if this is not done by the processor -> transmition frame is aborted
+		- character-oriented
+			+ STR and BSC
+			+ relied on particular characters to define frame boundaries
+		- bit-oriented
+			+ HDLC and SDLC
+			+ earlier devieces relied on physical-layer signals
+			+ later devices took over the physical-layered recognition of bit patterns
+		- synchronous line is never silent: moden transmitting = data flowing
+		- when physical layer indicates modem is active, USART sends steady stream of padding (either characters or bits)
 US HS = USB High-speed
 	- a mode of USB signal transmition using differential signaling on a twisted-pair data cable
 	- mode uses same wire pair, but with different electrical conventions

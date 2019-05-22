@@ -2,7 +2,7 @@ Not yet spellchecked...
 
 These notes were taken while reviewing documentation for the STM32F407 Discovery kit. These notes are comprised of terms unkown to me, which were either used in the data sheets of the board, or in the definitions or such terms. There is a separate section for terms or abbreviations specific to ARM
 
-NOTE: * designates that the acronym may be used for other relevant meanings that is known
+NOTE: * designates that the acronym may be used for other relevant meanings that are known
 
 ARM Terms
 DMA* = Direct Memory Access controller
@@ -30,6 +30,9 @@ AHB = Advanced High-performance Bus
 	- large bus widths
 	- simple transaction on AHB = address phase and subsequent data phase (without wait states: only two bus-cycles)
 	- access to target device controlled through MUX (non-tristate), thus admitting bus-access to one bus-master at a time
+ARQ - Automatic Repeat Request or Automatic Repeat Query
+	- error-control method for data transmission that uses acknowledgements and timeouts to achieve reliable data transmission over an unreliable service
+	- no acknowledgement before timeout = re-transmission of packet until acknowledgement
 Baud
 	- common measure of symbol rate, one of the components that determine the speed of communication over a data channel
 	- symbol rate or modulation rate in symbols per second or pulses per second
@@ -72,6 +75,13 @@ CMOS = Complementary metal-oxide-semiconductor
 	- allows high density of logic functions on a chip
 Compact Flash
 	- flash memory mass storage device used mainly in portable electronic devices
+CSMA = Carrier-Sense Multiple Access
+	- MAC protocol in which a node verifies the absence of other traffic before transmitting on a shared transmission interface medium (e.g. electrical bus or band of electromagnetic spectrum)
+CSMA/CD = Carrier-Sense Multiple Access with Collision Detection
+	- MAC method used most notably in early Ethernet tech for LAN
+	- uses CSMA in combination with collision detection in which a transmitting station detects collisions by sensing transmissions from other stations while transmitting a frame
+	- collision detected = stops transmitting frame, transmits jam signal, waits random time before sending the next frame
+	- improvement over CSMA as transmissions could be terminated and re-attempted faster
 CTS = Clear to Send
 D-Bus = Desktop Bus
 	- a software bus, and IPC, and an RPC, mechanism that allows communication between multiple processes concurrently running ofn the same macine
@@ -114,6 +124,14 @@ HDLC = High-level Data Link Control
 	- provides connection-oriented and connectionless service
 	- can be used for point-to-multipoint connections via the master-slave modes Normal Response Mode (NRM) and Asynchronous Response Mode (ARM)
 	- now almost exclusively used to connect one device to another using Asynchronous Balanced Mode (ABM)
+HNP = Host Negotiation Protocol
+	- new communication protocol introduced by the USB OTG and Embedded Host Supplement to the USB 2.0 specification	
+	- allows two devices to exchange their host/peripheral roles (both must be OTG dual-role devices)
+	- ability to reverse roles allows USB OTG device to acquire control of data-transfer scheduling
+	- any OTG device is capable of initiating data transfer over USB OTG bus
+	- HNP polling: host device periodically polls peripheral during active session to see if it wishes to become a host
+	- main purpose is to accomidate users who connected two devices in the wrong direction for the required task
+	- New OTG protocols cannot pass through a standard USB hub as those are based on electrical signaling via a dedicated wire
 I-Bus = IBus = Intelligent Input Bus
 	- an input method frameworkfor multilingual input in Unix-like OSs
 IC = Integrated Circuit
@@ -162,6 +180,19 @@ ISA = Instruction set architecture
 LIN = Local Interconnect Network
 	- a serial network protocol used for communication between components of a vehicle
 	- cheaper than CAN bus
+LLC = Logical Link Control
+	- upper sublayer of the data link layer (second layer of the OSI model)
+	- provides multiplexing mechanisms that fascilitate coexistence of multiple network protocols in a multipoint network and to be transported over the same network medium
+	- provides flow control and multiplexing for the logical link
+	- can also provide ARQ (Automatic Repeat Request) error management mechanisms
+	- acts as an interface between the MAC sublayer and the network layer
+MAC = Medium Access Control
+	- sublayer that controls the hardware responsible for interaction with the wired, optical, or wireless transmission medium
+	- data link layer (layer 2 of OSI model) = MAC sublayer + LLC sublayer
+	- provides flow control and multiplexing for the transmission medium
+MII = Media-Independent Interface ("Medium-Independent" according to data sheet")
+	- originally designed as a standard interface connecting a Fast Ethernet MAC block to a PHY chip
+	- different types of PHY devices can be used without redesigning or replacing MAC hardware (any MAC may be used with any PHY)
 MMC = MultiMediaCard
 	- memory card used for solid-state storage
 MMU = Memory Management Unit
@@ -193,6 +224,20 @@ NOR Flash
 PCCard
 	- configuration for computer parllel communication peripheral interface, designed for laptop computer
 	- originally designed as a standers for memory-expansion cards for computer storage
+PCS = Physical Coding Sublayer
+	- a networking protocol sublayer in Fast Ethernet, Gigabit Ethernet, and 10 Gigabit Ethernet standards
+	- resdies on physical layer and provides an interface between the PMA and the MII
+	- responsible for:
+		- data encoding and decoding
+		- scrambling and descrambling
+		- alignment marker instertion and removal
+		- block and symbol redistribution
+		- lane block desynchronization and deskew
+PHY = Physical Interface Device (according to data sheet)
+	- abbreviation got the physical layer of the OSI model
+	- refers to circuitry required to implement physical layer functions
+	- connects a link layer device (often called a MAC) to a physical medium (e.g. optical fiber or copper wires)
+	- typically includes PCS and PMD layer functionality
 PLL = phase-locked-loop
 	- control system that generates and output signal whose phase is related to the phase of an output signal
 	- used to:
@@ -201,9 +246,21 @@ PLL = phase-locked-loop
 		- generate a stable frequency at multiples of an input frequency
 		- distribute precisely timed clock pulses in digital logic circuits such as microprocessorsi
 	- MES: "Denotes a way a processor can multiply a slower clock (i.e., a slow oscillator) to get a faster clock ( a processor clock)"
+PMA = Physical Medium Attachment
+	- Sublayer of the PHY layer
+	- performs PMA framing, octect synchronization, and x^7 +x^6 + 1 scrambling/descrambling
 PMBus - Power Management Bus
 	- variant of SMBus targeted at digital management of power supplies
 	- slow speed two-wiew communication based on I2C
+PMD = Physical Medium Dependent
+	- sublayer of the PHY layer
+	- further help to define the physical layer of computer network protocols
+	- define details of transmission and reception of individual bits on a physical medium
+	- responsibilities include:
+		- bit timing
+		- signal encoding
+		- interacting with the physical medium
+		- properties of the cable, optical wire, or wire itself
 PoD - Power-down Reset
 	- a microcontroller or microprocessor peripheral that generates a reset signal when power is removed from a device (?)
 PoR = Power-on Reset
@@ -215,6 +272,14 @@ Prescaler or Prescale Register
 PSRAM = Pseudostatic RAM
 	- dynamic RAM with built-in refreash and address control circuitry to make it behave similarly to SRAM
 	- combines high density of DRAM with ease of use of SRAM
+PTP = Percision Time Protocol
+	- used to synchronize clocks throughout a computer network
+	- on a LAN, achieves accuracy in the sub-microsecond range = >suitable for measurment and control systems
+	- currently used for:
+		- financial transactions
+		- mobile phone tower transmissions
+		- sub-sea acoustic arrays
+		- networks that require percise timing but lack acccess to satellite navigation signals
 PWM = Pulse-width Modulation
 	- method of reducing the average power delivered by an electrical signal, by effectiveyly chopping it up into discrete parts
 	- average voltage (and current) fed to the load is controlled by tunring the switch on/off at a fast rate
@@ -224,6 +289,14 @@ RC Network = RC Curcuit = RC Filter
 	- an electric circuit composed of resistors and capacitors driven by a voltage or current source
 RC Oscillator
 	- a linear oscillator circuit which uses an RC network
+RMII = Reduced Media-Independent Interface ("Medium-Independent" according to data sheet")
+	- standard developed to reduce the number of signals required to connect PHY to MAC
+	- four changes to the MII standard:
+		1. TXCLK and RXCLK replaced by single clock, which is an input to the PHY instead of output
+			+ allows clock signal to be shared with all PHYs in a multiport device (e.g. a switch)
+		2. clock frequency doubled 25 MHz to 50 MHz; data paths narrowed to 2 bits from 4 bits
+		3. RXDV (Receive Data Valid) and CRS (Carrier Sense) signals multiplexed to one signal
+		4. COL (Collision detect) signal removed
 RPC = Remote Procedure Call
 	- when a computer causes a procedure (subroutine) to execute in a different address space (commonly on another computer on a shared network)
 	- the procedure is coded as a normal (local) procedure call, without explicitly coded details for the remote interaction
@@ -282,6 +355,13 @@ SRAM = Static Random-Access Memory
 	- opposed to DRAM, which must be periodically refreshed
 	- faster & more expensive than DRAM
 	- typically used for a CPU cache
+SRP = Session Request Protocol
+	- new communication protocol introduced by the USB OTG and Embedded Host Supplement to the USB 2.0 specification
+	- allows both communicating devices to control when the the link's power session is active
+		- only host is capable of doing this in standard USB
+	- allows fine control over power consumption
+	- can leave the USB link unpowered until the peripheral requires power
+	- New OTG protocols cannot pass through a standard USB hub as those are based on electrical signaling via a dedicated wire
 STR = Synchronous Transmit-Receive
 	- early IBM character-oriented communication protocol
 	- point-to-point only

@@ -5,7 +5,9 @@ These notes were taken while reviewing documentation for the STM32F407 Discovery
 NOTE: * designates that the acronym may be used for other relevant meanings that are known
 
 ARM Terms
+DCMI = Digital Camera Interface
 DMA* = Direct Memory Access controller
+ETM = Embedded Trace Macrocell (TM)
 EXTI = External Interrupt/Event Controller
 FSMC = Fixed Static Memory Controller
 IWDG = Independent Watchdog
@@ -13,7 +15,8 @@ LPR = Low-power Regulator
 MR = Main Regulator Mode
 NVIC = Nested Vector Interrupt Controller
 PVD = Programmable Voltage Detector
-
+SWJ-DP = Serial Wire JTAG Debug Port
+TPA = Trace Port Analyzer
 
 General Terms
 
@@ -25,6 +28,9 @@ White, Elicia. "Making Embedded Systems." O'Reilly Media, Inc., 2012.
 ABP = Advanced Peripheral Bus
 	- bus designed for low bandwidth control accesses, for example register interfaces on system peripherals
 	- address and data phase similar to AHB, but signal list is much reduced and less complex (e.g. no burts)
+ADC = Analog-to-Digital Converter
+	- a system that converts an analog signal, such as a sounf picked up by a microphone or light entering a digital camera, into a digital signal
+	- may also provide isolated measurement such as an electronic device that converts input analog voltage/current to a digital number representing magnitude of the voltage/current
 AHB = Advanced High-performance Bus
 	- ARM bus protocol
 	- large bus widths
@@ -83,6 +89,8 @@ CSMA/CD = Carrier-Sense Multiple Access with Collision Detection
 	- collision detected = stops transmitting frame, transmits jam signal, waits random time before sending the next frame
 	- improvement over CSMA as transmissions could be terminated and re-attempted faster
 CTS = Clear to Send
+DAC = Digital-to-Analog Converter
+	- a system that converts a digital signal into an analog signal
 D-Bus = Desktop Bus
 	- a software bus, and IPC, and an RPC, mechanism that allows communication between multiple processes concurrently running ofn the same macine
 Dhrystone
@@ -119,6 +127,8 @@ Four-of-Eight code
 	- 70 possible bit combinations
 FPU = Floating-point Unit
 	- a math coprocessor that is part of a computer sysmem that is specially designed to carry out operations on floating point numbers
+GPIO = General Purpose Input/Output
+	- an uncommitted digital signal pin on an IC or electronic circuit board whose behavior - including whether it acts as an input or output - is controllable by the user at run time
 HDLC = High-level Data Link Control
 	- bit-oriented code-transparent synchronous data link layer protocol developed by ISO
 	- provides connection-oriented and connectionless service
@@ -177,6 +187,10 @@ IPC = Inter-process communication
 ISA = Instruction set architecture
 	- an abstract model of a computer
 	- a realization of an ISA is an implementaion
+JTAG = Joint Test Action Group (named after)
+	- industry standard for verifying designs and testing printed circuit boards after manufacture
+	- implements standards for on-chip instrumentation in electronic design automation (EDA) as a complementary tool to digital simulation
+	- specifies use of dedicated debug port implementing a serial communications interface for low-overhead access without direct external access to system address and data busses
 LIN = Local Interconnect Network
 	- a serial network protocol used for communication between components of a vehicle
 	- cheaper than CAN bus
@@ -297,6 +311,8 @@ RMII = Reduced Media-Independent Interface ("Medium-Independent" according to da
 		2. clock frequency doubled 25 MHz to 50 MHz; data paths narrowed to 2 bits from 4 bits
 		3. RXDV (Receive Data Valid) and CRS (Carrier Sense) signals multiplexed to one signal
 		4. COL (Collision detect) signal removed
+RNG = Random Number Generator
+	- a device that generates a sequence of numbers of symbols that cannot be reasonably predicted better than by a random chance
 RPC = Remote Procedure Call
 	- when a computer causes a procedure (subroutine) to execute in a different address space (commonly on another computer on a shared network)
 	- the procedure is coded as a normal (local) procedure call, without explicitly coded details for the remote interaction
@@ -324,6 +340,8 @@ SDLC = Synchronous Data Link Control
 	- ability to mix half-duplex secondary stations w/ full-duplex primary stations on four-wire circuits => reduce cost of dedicated facilities
 	- runs under assumption of SNA header
 	- use becoming more rare, replaced with IP-based protocols
+SDR = Software-Defined Radio
+	- radio communication system where components that have been traditionally implemented in hardware (e.g. mixers, filters, amplifiers, modulators/demodulators, detectors, etc.) are instead implemented by means of software on a personal computer or embedded system
 SMBus = System Management Bus
 	- single-ended simple two-wire bus for lightweight communication
 	- commonly found in motherboards for communication with power source for ON/OFF instructions
@@ -372,7 +390,9 @@ UART = Universal Asynchronous Receiver-Transmitter
 	- data format and transmission speeds are connfigurable
 	- electric signaling levels and methods are determined by a driver circuit external to the UART
 	- usually an individual (or part of an) IC used for serial communications over a computer of peripheral device serial port
-
+ULPI = UTMI Low-Pin Interface
+	- defines an interface between USB IP link controllers and the PHYs or tranceivers that drive the actual bus
+	- designed specifically to reduce the pin count of discrete high-speed USB PHYs
 USART = Universal Synchronous and Asynchronous Receiver-Transmitter
 	- type of serial bus that can be programmed to communicate asynchronously or synchronously
 	- in synchronous mode:
@@ -395,6 +415,7 @@ US HS = USB High-speed
 
 USB OTG = USB on-the-go
 	- specification that allows usb devices to operate as hosts for other USB devices
+UTMI = USB 2.0 Transceiver Macrocell Interface
 Vehicle Bus
 	- a specialized internal communications network that interconnects components inside a vehicle
 VDD

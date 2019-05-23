@@ -25,9 +25,9 @@ White, Elicia. "Making Embedded Systems." O'Reilly Media, Inc., 2012.
 _A_
 ABP = Advanced Peripheral Bus
 	- bus designed for low bandwidth control accesses, for example register interfaces on system peripherals
-	- address and data phase similar to AHB, but signal list is much reduced and less complex (e.g. no burts)
+	- address and data phase similar to AHB, but signal list is much reduced and less complex (e.g. no bursts)
 ADC = Analog-to-Digital Converter
-	- a system that converts an analog signal, such as a sounf picked up by a microphone or light entering a digital camera, into a digital signal
+	- a system that converts an analog signal, such as a sound picked up by a microphone or light entering a digital camera, into a digital signal
 	- may also provide isolated measurement such as an electronic device that converts input analog voltage/current to a digital number representing magnitude of the voltage/current
 AHB = Advanced High-performance Bus
 	- ARM bus protocol
@@ -35,8 +35,8 @@ AHB = Advanced High-performance Bus
 	- simple transaction on AHB = address phase and subsequent data phase (without wait states: only two bus-cycles)
 	- access to target device controlled through MUX (non-tristate), thus admitting bus-access to one bus-master at a time
 ARQ - Automatic Repeat Request or Automatic Repeat Query
-	- error-control method for data transmission that uses acknowledgements and timeouts to achieve reliable data transmission over an unreliable service
-	- no acknowledgement before timeout = re-transmission of packet until acknowledgement
+	- error-control method for data transmission that uses acknowledgments and timeouts to achieve reliable data transmission over an unreliable service
+	- no acknowledgment before timeout = re-transmission of packet until acknowledgment
 _B_
 Baud
 	- common measure of symbol rate, one of the components that determine the speed of communication over a data channel
@@ -129,7 +129,7 @@ Four-of-Eight code
 	- exactly four bits of each character were 1 bits
 	- 70 possible bit combinations
 FPU = Floating-point Unit
-	- a math coprocessor that is part of a computer sysmem that is specially designed to carry out operations on floating point numbers
+	- a math coprocessor that is part of a computer system that is specially designed to carry out operations on floating point numbers
 _G_
 GPIO = General Purpose Input/Output
 	- an uncommitted digital signal pin on an IC or electronic circuit board whose behavior - including whether it acts as an input or output - is controllable by the user at run time
@@ -192,12 +192,12 @@ IPC = Inter-process communication
 	- typically applications can use IPC, categorized as clients and servers, where the client requests and the server responds
 ISA = Instruction set architecture
 	- an abstract model of a computer
-	- a realization of an ISA is an implementaion
+	- a realization of an ISA is an implementation
 _J_
 JTAG = Joint Test Action Group (named after)
 	- industry standard for verifying designs and testing printed circuit boards after manufacture
 	- implements standards for on-chip instrumentation in electronic design automation (EDA) as a complementary tool to digital simulation
-	- specifies use of dedicated debug port implementing a serial communications interface for low-overhead access without direct external access to system address and data busses
+	- specifies use of dedicated debug port implementing a serial communications interface for low-overhead access without direct external access to system address and data buses
 _K_
 _L_
 LIN = Local Interconnect Network
@@ -308,11 +308,11 @@ PTP = Precision Time Protocol
 		- sub-sea acoustic arrays
 		- networks that require precise timing but lack access to satellite navigation signals
 PWM = Pulse-width Modulation
-	- method of reducing the average power delivered by an electrical signal, by effectiveyly chopping it up into discrete parts
-	- average voltage (and current) fed to the load is controlled by tunring the switch on/off at a fast rate
+	- method of reducing the average power delivered by an electrical signal, by effectively chopping it up into discrete parts
+	- average voltage (and current) fed to the load is controlled by turning the switch on/off at a fast rate
 _Q_
 _R_
-RISC = Reduced instruction set somputer
+RISC = Reduced instruction set computer
 	- a computer whose ISA allows it to have fewer cycles per instruction than a CISC
 RC Network = RC Circuit = RC Filter
 	- an electric circuit composed of resistors and capacitors driven by a voltage or current source
@@ -400,7 +400,7 @@ STR = Synchronous Transmit-Receive
 	- early IBM character-oriented communication protocol
 	- point-to-point only
 	- employed four-of-eight transmission code
-	- communicated at up to 5100 charcters per second at half-duplex or full-duplex
+	- communicated at up to 5100 characters per second at half-duplex or full-duplex
 _T_
 _U_
 UART = Universal Asynchronous Receiver-Transmitter
@@ -409,7 +409,7 @@ UART = Universal Asynchronous Receiver-Transmitter
 	- electric signaling levels and methods are determined by a driver circuit external to the UART
 	- usually an individual (or part of an) IC used for serial communications over a computer of peripheral device serial port
 ULPI = UTMI Low-Pin Interface
-	- defines an interface between USB IP link controllers and the PHYs or tranceivers that drive the actual bus
+	- defines an interface between USB IP link controllers and the PHYs or transceivers that drive the actual bus
 	- designed specifically to reduce the pin count of discrete high-speed USB PHYs
 USART = Universal Synchronous and Asynchronous Receiver-Transmitter
 	- type of serial bus that can be programmed to communicate asynchronously or synchronously
@@ -444,8 +444,8 @@ VSS
 _W_
 Watchdog Timer
 	- an electronic timer that is used to detect and recover from computer malfunctions
-	- MES: might reset processor if no action is performed (e.g. toogle of an I/O line or register write)
-	- MES: system wil wait for a processor signal that things are going well
+	- MES: might reset processor if no action is performed (e.g. toggle of an I/O line or register write)
+	- MES: system will wait for a processor signal that things are going well
 _X_
 _Y_
 _Z_

@@ -92,8 +92,17 @@ CTS = Clear to Send
 _D_
 DAC = Digital-to-Analog Converter
 	- a system that converts a digital signal into an analog signal
+Data Transmission Circuit
+	- transmission media and intervening equipment used for the data transfer btwn DTEs
 D-Bus = Desktop Bus
 	- a software bus, and IPC, and an RPC, mechanism that allows communication between multiple processes concurrently running on the same machine
+DCE = Data Circuit-termination Equipment or Data Communication Equipment
+	- device that sits btwn DTE and data transmission circuit 
+	- usually a modem
+	- usually performs functions:
+		- signal conversion
+		- coding
+		- line clocking
 Dhrystone
 	- a synthetic computing benchmark program representative of general processor (CPU) performance
 	- developed in 1984 intended to be representative of system (integer) programming
@@ -112,6 +121,12 @@ DSP = Digital Signal Processor
 	- often a challenge for general microprocessors to keep up with processing continuously in real-time
 	- usually have better battery power efficiency than general microprocessors
 	- often use special memory architectures to fetch multiple data or instructions simultaneously
+DTE = Data Terminal Equipment
+	- an end instrument that converts user information into signals or reconverts received signals
+	- aka tail circuits
+	- communicates to DCEs
+	- serves as a data source or a data sink
+	- provides the data communication control function to be performed in accordance with the link protocol
 _E_
 Endec
 	- in electrical communication, this is a device that acts as both and encoder and decoder on a signal or data stream, either with same or separate circuitry or algorithm
@@ -147,6 +162,8 @@ HNP = Host Negotiation Protocol
 	- HNP polling: host device periodically polls peripheral during active session to see if it wishes to become a host
 	- main purpose is to accommodate users who connected two devices in the wrong direction for the required task
 	- New OTG protocols cannot pass through a standard USB hub as those are based on electrical signaling via a dedicated wire
+Hysteresis
+	- state dependent on past state as well as input
 _I_
 I-Bus = IBus = Intelligent Input Bus
 	- an input method framework for multilingual input in Unix-like OSs
@@ -332,6 +349,28 @@ RPC = Remote Procedure Call
 	- when a computer causes a procedure (subroutine) to execute in a different address space (commonly on another computer on a shared network)
 	- the procedure is coded as a normal (local) procedure call, without explicitly coded details for the remote interaction
 	- type of client-server interaction typically implemented via a request-response message-passing system
+RS-232
+	- standard originally introduced in 1960 for serial communication transmission of data
+	- formally defines signals between DTE and DCE
+	- defines electrical characteristics and timing of signals, meaning of signals, and physical size and pinout of connectors
+	- USB has replaced this for most peripheral interface roles
+	- MES
+		- Often converted from TTL-level signals on a board to RS-232 to USB for interface with a laptop
+		- defines 8 signals, though most important are transmit (TX) and receive (RX)
+			+ RX and TX are all that are needed for communication with host machine
+			+ connections to cellular data modems or serial-to-ethernet converters may require more lines
+				> RTS/CTS handshaking
+				> needs master and slave designated = DTE is master DCE is slave
+		- physical and data-link layer
+		- no built-in addressing = conection only btwn two parties
+		- must agree on: buad rate, parity, # start/stop bits, and flow control
+			+ flow control can be:
+				> hardware using RTS/CTS
+				> software using Xon/Xoff
+				> no flow control
+		- implicit clock means baud rate must be configured on both devices
+		- 15V means signal can travel around 15m before deterioration
+		- easy to implement in software and cheap to implement in hardware
 RTC = real-time-clock
 	- clock that tracks current time
 RTS = Request To Send
@@ -343,6 +382,9 @@ S-Bus
 	- originally announced as both a bus system and peripheral interconnect that allowed input and output devices relatively low latency access to memory
 	- replaced by MBus once memory and CPU speeds outpaced I/O performance
 	- served as input/output bus for remainder of lifetime
+Schmitt trigger
+	- Hardware that implements hysteresis in VIL and VIH
+	- i.e. takes low input and generates low output until input rises above a threshold, then generates high output
 SDIO = Secure Digital Input Output
 	- an extension of the SD (a non-volatile memory card) specification to cover I/O functions
 SDLC = Synchronous Data Link Control
@@ -408,6 +450,18 @@ UART = Universal Asynchronous Receiver-Transmitter
 	- data format and transmission speeds are configurable
 	- electric signaling levels and methods are determined by a driver circuit external to the UART
 	- usually an individual (or part of an) IC used for serial communications over a computer of peripheral device serial port
+	- bases of RS-232 ports on computers
+	- lines:
+		- RX 	: Receiving Line
+		- TX	: Transmitting Line
+		- Ground: Ground
+	- no master/slave relationship
+	- line connections determined by manufacturer (RX/TX to RX/TX vs TX/RX to RX/TX)
+	- transfer done at processor voltages when t and r are on the same board
+	- trace length increase = distortion and reduced voltages
+	- bits transmitted at prearranged baud rate (determined by both parties ahead of time)
+	- two systems baud clocks can be up to 5% off
+	
 ULPI = UTMI Low-Pin Interface
 	- defines an interface between USB IP link controllers and the PHYs or transceivers that drive the actual bus
 	- designed specifically to reduce the pin count of discrete high-speed USB PHYs
@@ -426,6 +480,15 @@ USART = Universal Synchronous and Asynchronous Receiver-Transmitter
 			+ later devices took over the physical-layered recognition of bit patterns
 		- synchronous line is never silent: modem transmitting = data flowing
 		- when physical layer indicates modem is active, USART sends steady stream of padding (either characters or bits)
+	- lines:
+		- RX	: Receiving Line
+		- TX	: Tansfer Line
+		- Clock	: clock used to synchronize the devices (square baud wave)
+		- CTS	: Clear To Send flow control signal
+		- RTS	: Ready to Send flow control signal
+	- flow control signals used to throttle data flow
+	- CTS connected to RTS of other machine
+	- aka Hardware Handshaking
 US HS = USB High-speed
 	- a mode of USB signal transmission using differential signaling on a twisted-pair data cable
 	- mode uses same wire pair, but with different electrical conventions
@@ -439,6 +502,10 @@ Vehicle Bus
 	- a specialized internal communications network that interconnects components inside a vehicle
 VDD
 	- a positive IC power-supply pin on field-effect transistor-based integrated circuits
+VIH = Voltage Input High
+	- Voltage at which an input signal to the processor is declared high
+VIL = Voltage Input Low
+	- Voltage at which an input signal to the processor is declared low
 VSS
 	- a negative IC power-supply pin on field-effect transistor-based integrated circuits
 _W_
@@ -446,6 +513,10 @@ Watchdog Timer
 	- an electronic timer that is used to detect and recover from computer malfunctions
 	- MES: might reset processor if no action is performed (e.g. toggle of an I/O line or register write)
 	- MES: system will wait for a processor signal that things are going well
+Wire Wrap
+	- wire connections made by wrapping several turns of uninsulated sections of wire around component lead or socket pin
+	- invented to wire telephone crossbar switches
+	- later adapted to construct electronic circuit boards
 _X_
 _Y_
 _Z_

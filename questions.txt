@@ -1,0 +1,15 @@
+Questions that are important to know
+
+Comunication
+
+Why use USART instead of UART?
+	- use USART for hardware handshaking as baud clock support is rare
+	- in code: poll state of CTS or CTS pin gnereated interrupt
+
+Where are UART's used?
+	- GPS modules (for now)
+	- ATMEL processors
+	- a lot of industrial equipment
+	- desktop computers but rare on laptops
+	- serial to USB has helped keep USART alive
+

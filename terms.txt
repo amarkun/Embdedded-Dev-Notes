@@ -19,7 +19,7 @@ TPA = Trace Port Analyzer
 General Terms
 
 NOTE: Nearly all definitions are taken from Wikipedia. Lines if MES are taken from O'Reilly's "Making Embedded Systems" written by Elicia White
-citation: 
+citation:
 White, Elicia. "Making Embedded Systems." O'Reilly Media, Inc., 2012.
 
 _A_
@@ -60,7 +60,7 @@ Bit-bang
 		- consumes more processing power than a built-in processor interface, but is more flexible
 Bit Depth
 	- number of bits of information in each sample or number of possible digital values that can be used to represent each sample
-	- directly corresponds to the resolution of each sample 
+	- directly corresponds to the resolution of each sample
 BJT = Bipolar junction transistor
 	- a type of transistor that uses both electron and hole charge carriers (FET use only one type of charge carrier
 	- use two conjunctions between to semiconductor types, n-type and p-type
@@ -105,7 +105,7 @@ DAC = Digital-to-Analog Converter
 Data Transmission Circuit
 	- transmission media and intervening equipment used for the data transfer btwn DTEs
 DCE = Data Circuit-termination Equipment or Data Communication Equipment
-	- device that sits btwn DTE and data transmission circuit 
+	- device that sits btwn DTE and data transmission circuit
 	- usually a modem
 	- usually performs functions:
 		- signal conversion
@@ -119,7 +119,7 @@ Delta-sigma Modulation
 		2. applies digital filter to form a higher-resolution but lower sample-frequency digital output
 	- Delta-sigma DAC
 		1. encodes a high-resolution digital input signal into a lower-resolution but high sample-frequency signal that is mapped to voltages
-		2. smoothes signal with analog filter
+		2. smooths signal with analog filter
 	- temp use of lower-res signal simplifies circuit design and improves efficiency
 	- very easy to generate, transmit, and accurately regenerate at the receiver, given that only the timing and sign of the pulses can be recovered
 Dhrystone
@@ -174,7 +174,7 @@ HDLC = High-level Data Link Control
 	- can be used for point-to-multipoint connections via the master-slave modes Normal Response Mode (NRM) and Asynchronous Response Mode (ARM)
 	- now almost exclusively used to connect one device to another using Asynchronous Balanced Mode (ABM)
 HNP = Host Negotiation Protocol
-	- new communication protocol introduced by the USB OTG and Embedded Host Supplement to the USB 2.0 specification	
+	- new communication protocol introduced by the USB OTG and Embedded Host Supplement to the USB 2.0 specification
 	- allows two devices to exchange their host/peripheral roles (both must be OTG dual-role devices)
 	- ability to reverse roles allows USB OTG device to acquire control of data-transfer scheduling
 	- any OTG device is capable of initiating data transfer over USB OTG bus
@@ -188,7 +188,7 @@ HPF = High-Pass Filter aka low-cut filter or bass-cut filter
 	- complement of low-pass filter
 	- usually modeled as a linear time-invariant system
 	- uses:
-		- blcoks DC from circuitry sensitive to non-zero average voltages or radio-frequency devices
+		- blocks DC from circuitry sensitive to non-zero average voltages or radio-frequency devices
 		- used with low-pass filters to produce a bandpass filter
 Hysteresis
 	- state dependent on past state as well as input
@@ -257,12 +257,12 @@ LLC = Logical Link Control
 	- can also provide ARQ (Automatic Repeat Request) error management mechanisms
 	- acts as an interface between the MAC sublayer and the network layer
 LPCM = Linear Pulse-Code Modulation
-	- specific type of PCM with linearly uniform quanitization levels
+	- specific type of PCM with linearly uniform quantization levels
 LPF = Low-Pass Filter aka high-cut filter or treble-cut filter
 	- filter that selects for signals lower than a selected cutoff frequency
 	- attenuates signals with frequencies higher than the cutoff frequency
 	- frequency response depends of filter design
-	- complement of high-pass filter	
+	- complement of high-pass filter
 _M_
 MAC = Medium Access Control
 	- sublayer that controls the hardware responsible for interaction with the wired, optical, or wireless transmission medium
@@ -307,10 +307,10 @@ PCCard
 	- originally designed as a standers for memory-expansion cards for computer storage
 PCM = Pulse-Code Modulation
 	- method used to digitally represent analog signals
-	- standard form of digital audio in computers and many other common audio devices and appliactions
+	- standard form of digital audio in computers and many other common audio devices and applications
 	- amplitude of the analog signal is sampled at frequent uniform intervals
-	- each smaple is quantized to nearest value within a range of digital steps
-	- quantization levels vary as a function of amplitude 
+	- each sample is quantized to nearest value within a range of digital steps
+	- quantization levels vary as a function of amplitude
 	- uses 2 qualities to determine stream's fidelity to the original analog signal
 		1. sampling rate
 		2. bit depth
@@ -321,8 +321,8 @@ PCM = Pulse-Code Modulation
 		- produces fully discrete representation of input signal that can be easily encoded as digital data for storage or manipulation
 	- demodulation
 		- DACs
-		- produce a voltage/current that thta represents value presented in digital inputs
-		- output generally filtered for apmlified use
+		- produce a voltage/current that that represents value presented in digital inputs
+		- output generally filtered for amplified use
 		- can apply the procedure of modulation in reverse to recover the original signal from sampled data
 PCS = Physical Coding Sublayer
 	- a networking protocol sublayer in Fast Ethernet, Gigabit Ethernet, and 10 Gigabit Ethernet standards
@@ -335,7 +335,7 @@ PCS = Physical Coding Sublayer
 		- lane block desynchronization and deskew
 PDM = Pulse-Density Modulation
 	- form of modulation used to represent an analog signal with a binary signal
-	- relative density of pulses corresponds to anaglo signal's amplitude
+	- relative density of pulses corresponds to analog signal's amplitude
 	- output for 1-bit DAC is the same as PDM encoding of the signal
 	- signal switches more often than PWM
 		- for 50% V:
@@ -395,7 +395,7 @@ PWM = Pulse-width Modulation
 	- average voltage (and current) fed to the load is controlled by turning the switch on/off at a fast rate
 _Q_
 Quantization
-	- in mathematics and signal processsing
+	- in mathematics and signal processing
 	- process of mapping input values from a large (often continuous set) to output values in a (countable) smaller set (often w/ finite elements)
 	- Typical examples = rounding or truncation
 	- involved to some degree in nearly all signal processing (which usually involves rounding)
@@ -438,8 +438,8 @@ RS-232
 				> RTS/CTS handshaking
 				> needs master and slave designated = DTE is master DCE is slave
 		- physical and data-link layer
-		- no built-in addressing = conection only btwn two parties
-		- must agree on: buad rate, parity, # start/stop bits, and flow control
+		- no built-in addressing = connection only btwn two parties
+		- must agree on: baud rate, parity, # start/stop bits, and flow control
 			+ flow control can be:
 				> hardware using RTS/CTS
 				> software using Xon/Xoff
@@ -511,7 +511,7 @@ SRAM = Static Random-Access Memory
 	- typically used for a CPU cache
 SRP = Session Request Protocol
 	- new communication protocol introduced by the USB OTG and Embedded Host Supplement to the USB 2.0 specification
-	- allows both communicating devices to control when the the link's power session is active
+	- allows both communicating devices to control when the link's power session is active
 		- only host is capable of doing this in standard USB
 	- allows fine control over power consumption
 	- can leave the USB link unpowered until the peripheral requires power
@@ -541,7 +541,7 @@ UART = Universal Asynchronous Receiver-Transmitter
 	- trace length increase = distortion and reduced voltages
 	- bits transmitted at prearranged baud rate (determined by both parties ahead of time)
 	- two systems baud clocks can be up to 5% off
-	
+
 ULPI = UTMI Low-Pin Interface
 	- defines an interface between USB IP link controllers and the PHYs or transceivers that drive the actual bus
 	- designed specifically to reduce the pin count of discrete high-speed USB PHYs
@@ -562,7 +562,7 @@ USART = Universal Synchronous and Asynchronous Receiver-Transmitter
 		- when physical layer indicates modem is active, USART sends steady stream of padding (either characters or bits)
 	- lines:
 		- RX	: Receiving Line
-		- TX	: Tansfer Line
+		- TX	: Transfer Line
 		- Clock	: clock used to synchronize the devices (square baud wave)
 		- CTS	: Clear To Send flow control signal
 		- RTS	: Ready to Send flow control signal

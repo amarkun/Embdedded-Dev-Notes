@@ -37,7 +37,12 @@ AHB = Advanced High-performance Bus
 ARQ - Automatic Repeat Request or Automatic Repeat Query
 	- error-control method for data transmission that uses acknowledgments and timeouts to achieve reliable data transmission over an unreliable service
 	- no acknowledgment before timeout = re-transmission of packet until acknowledgment
+Attenuation (sometimes extinction)
+	- gradual loss of flux intensity through a medium
+	- affects the propagation of waves and signals in electrical circuits, optical fibers, and air
 _B_
+BPF = Bandpass Filter or Band-Pass Filter
+	- device that passes freq within a certain range and attenuates freq outside that range
 Baud
 	- common measure of symbol rate, one of the components that determine the speed of communication over a data channel
 	- symbol rate or modulation rate in symbols per second or pulses per second
@@ -53,6 +58,9 @@ Bit-bang
 	- MES:
 		- can be created for any serial interface
 		- consumes more processing power than a built-in processor interface, but is more flexible
+Bit Depth
+	- number of bits of information in each sample or number of possible digital values that can be used to represent each sample
+	- directly corresponds to the resolution of each sample 
 BJT = Bipolar junction transistor
 	- a type of transistor that uses both electron and hole charge carriers (FET use only one type of charge carrier
 	- use two conjunctions between to semiconductor types, n-type and p-type
@@ -90,12 +98,12 @@ CSMA/CD = Carrier-Sense Multiple Access with Collision Detection
 	- improvement over CSMA as transmissions could be terminated and re-attempted faster
 CTS = Clear to Send
 _D_
+D-Bus = Desktop Bus
+	- a software bus, and IPC, and an RPC, mechanism that allows communication between multiple processes concurrently running on the same machine
 DAC = Digital-to-Analog Converter
 	- a system that converts a digital signal into an analog signal
 Data Transmission Circuit
 	- transmission media and intervening equipment used for the data transfer btwn DTEs
-D-Bus = Desktop Bus
-	- a software bus, and IPC, and an RPC, mechanism that allows communication between multiple processes concurrently running on the same machine
 DCE = Data Circuit-termination Equipment or Data Communication Equipment
 	- device that sits btwn DTE and data transmission circuit 
 	- usually a modem
@@ -103,6 +111,17 @@ DCE = Data Circuit-termination Equipment or Data Communication Equipment
 		- signal conversion
 		- coding
 		- line clocking
+Delta-sigma Modulation
+	- method for encoding analog signals into digital signals as found in an ADC converter
+	- also used to convert high bit-count, low-frequency digital signals into lower bit-count, higher-frequency signals as part of a DAC converter
+	- Delta-sigma ADC
+		1. encodes analog signal using high-frequency d-s modulation
+		2. applies digital filter to form a higher-resolution but lower sample-frequency digital output
+	- Delta-sigma DAC
+		1. encodes a high-resolution digital input signal into a lower-resolution but high sample-frequency signal that is mapped to voltages
+		2. smoothes signal with analog filter
+	- temp use of lower-res signal simplifies circuit design and improves efficiency
+	- very easy to generate, transmit, and accurately regenerate at the receiver, given that only the timing and sign of the pulses can be recovered
 Dhrystone
 	- a synthetic computing benchmark program representative of general processor (CPU) performance
 	- developed in 1984 intended to be representative of system (integer) programming
@@ -162,6 +181,15 @@ HNP = Host Negotiation Protocol
 	- HNP polling: host device periodically polls peripheral during active session to see if it wishes to become a host
 	- main purpose is to accommodate users who connected two devices in the wrong direction for the required task
 	- New OTG protocols cannot pass through a standard USB hub as those are based on electrical signaling via a dedicated wire
+HPF = High-Pass Filter aka low-cut filter or bass-cut filter
+	- filter that selects for signals higher than a selected cutoff frequency
+	- attenuates signals with frequencies lower than the cutoff frequency
+	- frequency response depends of filter design
+	- complement of low-pass filter
+	- usually modeled as a linear time-invariant system
+	- uses:
+		- blcoks DC from circuitry sensitive to non-zero average voltages or radio-frequency devices
+		- used with low-pass filters to produce a bandpass filter
 Hysteresis
 	- state dependent on past state as well as input
 _I_
@@ -220,12 +248,21 @@ _L_
 LIN = Local Interconnect Network
 	- a serial network protocol used for communication between components of a vehicle
 	- cheaper than CAN bus
+Linear Time-Invariant Theory ( or LTI System Theory)
+	- investigates the response of a linear and time-invariant system to an arbitrary input signal
 LLC = Logical Link Control
 	- upper sublayer of the data link layer (second layer of the OSI model)
 	- provides multiplexing mechanisms that facilitate coexistence of multiple network protocols in a multipoint network and to be transported over the same network medium
 	- provides flow control and multiplexing for the logical link
 	- can also provide ARQ (Automatic Repeat Request) error management mechanisms
 	- acts as an interface between the MAC sublayer and the network layer
+LPCM = Linear Pulse-Code Modulation
+	- specific type of PCM with linearly uniform quanitization levels
+LPF = Low-Pass Filter aka high-cut filter or treble-cut filter
+	- filter that selects for signals lower than a selected cutoff frequency
+	- attenuates signals with frequencies higher than the cutoff frequency
+	- frequency response depends of filter design
+	- complement of high-pass filter	
 _M_
 MAC = Medium Access Control
 	- sublayer that controls the hardware responsible for interaction with the wired, optical, or wireless transmission medium
@@ -268,6 +305,25 @@ _P_
 PCCard
 	- configuration for computer parallel communication peripheral interface, designed for laptop computer
 	- originally designed as a standers for memory-expansion cards for computer storage
+PCM = Pulse-Code Modulation
+	- method used to digitally represent analog signals
+	- standard form of digital audio in computers and many other common audio devices and appliactions
+	- amplitude of the analog signal is sampled at frequent uniform intervals
+	- each smaple is quantized to nearest value within a range of digital steps
+	- quantization levels vary as a function of amplitude 
+	- uses 2 qualities to determine stream's fidelity to the original analog signal
+		1. sampling rate
+		2. bit depth
+	- modulation
+		- signal sampled at regular intervals
+		- for each sample, an available (y-axis) value is chosen
+		- commonly implemented on ADC
+		- produces fully discrete representation of input signal that can be easily encoded as digital data for storage or manipulation
+	- demodulation
+		- DACs
+		- produce a voltage/current that thta represents value presented in digital inputs
+		- output generally filtered for apmlified use
+		- can apply the procedure of modulation in reverse to recover the original signal from sampled data
 PCS = Physical Coding Sublayer
 	- a networking protocol sublayer in Fast Ethernet, Gigabit Ethernet, and 10 Gigabit Ethernet standards
 	- resides on physical layer and provides an interface between the PMA and the MII
@@ -277,6 +333,16 @@ PCS = Physical Coding Sublayer
 		- alignment marker insertion and removal
 		- block and symbol redistribution
 		- lane block desynchronization and deskew
+PDM = Pulse-Density Modulation
+	- form of modulation used to represent an analog signal with a binary signal
+	- relative density of pulses corresponds to anaglo signal's amplitude
+	- output for 1-bit DAC is the same as PDM encoding of the signal
+	- signal switches more often than PWM
+		- for 50% V:
+			+ PWM on for 128 consecutive cycles, off for 128 consecutive cycles
+			+ PDM switches btwn on and off every other cycle
+	- Analog-to-digital conversion uses delta-sigma modulation
+	- Digital-to-analog conversion requires passing PDM signal through a low-pass filter
 PHY = Physical Interface Device (according to data sheet)
 	- abbreviation got the physical layer of the OSI model
 	- refers to circuitry required to implement physical layer functions
@@ -328,6 +394,16 @@ PWM = Pulse-width Modulation
 	- method of reducing the average power delivered by an electrical signal, by effectively chopping it up into discrete parts
 	- average voltage (and current) fed to the load is controlled by turning the switch on/off at a fast rate
 _Q_
+Quantization
+	- in mathematics and signal processsing
+	- process of mapping input values from a large (often continuous set) to output values in a (countable) smaller set (often w/ finite elements)
+	- Typical examples = rounding or truncation
+	- involved to some degree in nearly all signal processing (which usually involves rounding)
+Quantization Error
+	- difference between an input value and its quantized value (such as a round-off error)
+Quantizer
+	- algorithmic function that performs quantization
+	- an ADC is an example
 _R_
 RISC = Reduced instruction set computer
 	- a computer whose ISA allows it to have fewer cycles per instruction than a CISC
@@ -382,6 +458,8 @@ S-Bus
 	- originally announced as both a bus system and peripheral interconnect that allowed input and output devices relatively low latency access to memory
 	- replaced by MBus once memory and CPU speeds outpaced I/O performance
 	- served as input/output bus for remainder of lifetime
+Sampling Rate
+	- times per second that samples are taken
 Schmitt trigger
 	- Hardware that implements hysteresis in VIL and VIH
 	- i.e. takes low input and generates low output until input rises above a threshold, then generates high output
@@ -444,6 +522,8 @@ STR = Synchronous Transmit-Receive
 	- employed four-of-eight transmission code
 	- communicated at up to 5100 characters per second at half-duplex or full-duplex
 _T_
+TIV = Time-Invariant System
+	- a time-invariant system has a time-dependent system function that is not a direct function of time
 _U_
 UART = Universal Asynchronous Receiver-Transmitter
 	- computer hardware device for asynchronous serial communication

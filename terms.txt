@@ -125,6 +125,48 @@ Delta-sigma Modulation
 Dhrystone
 	- a synthetic computing benchmark program representative of general processor (CPU) performance
 	- developed in 1984 intended to be representative of system (integer) programming
+DMA = Direct Memory Access
+	- a controller used to bypass system memory to get to system memory and/or I/O
+	- "free DMA controller" = DMA built into chip
+	- usually associated with I/O devices that need very rapid access to large chunks of RAM
+		- e.g. a data logger
+	- requires complex hardware, usually programmed by software
+	- usually two pins
+		- "Bus Request" or "Hold": input asserted by external device that causes CPU to tri-stae pins
+		- "Bus Grant" or "Bus Acknowledge" or "Hold Acknowledge": signals processor is tri-stated
+	- DMA uses CPU to yield control -> DMA takes over bus and initiates bus cycles
+	- DMA transfer looks like normal CPU cycles
+	- CPU dead during DMA transfer
+	- DMA has control until it decides to release bus back to CPU
+	- usually ends with an interrupt
+	- invented to move data btwn I/O and memory
+	- now can also ...
+	- Types:
+		- Synchronous DMA
+			+ moves single byte or word at a time btwn system memory and peripheral
+			+ I/O handshake for each transfer ("Bus Request"/"Bus Acknowledge")
+			+ aka "Cycle Stealing"
+		- Burst Mode DMA or Block mode
+			+ assumes destination and source addresses can transfer as fast as controller can generate them
+			+ copies entire source block to destination
+			+ can transfer data rapidly
+		- Flyby DMA
+			+ puts out source and destination address -> initiates a simultaneous read/write cycle
+			+ implies either source or destination does not require an address
+			+ e.g. copy memory to a FIFO port
+			+ not supported on many controllers
+		- Transparent Mode
+			+ moves data when the CPU isn't using the bus
+			+ require monitoring of CPU
+			+ slowest of all methods
+			+ doesn't cause jitter
+			+
+	- Uses:
+		- transfer data to and from drive (floppy and hard disc)
+		- large memory transfers
+	- usually need logic analyzer to debug
+	- TIP: first write a routine to do a memory to memory transfer, then modify for peripherals
+	- DMA will destroy timing calculations
 DMIPS = Dhrystone MIPS (Million Instructions per Second)
 	- a measure of computer performance relative to the performance of the DEC VAX 11/780 minicomputer of the 1970s
 DRAM - Dynamic Random-Access Memory
@@ -452,6 +494,19 @@ RTC = real-time-clock
 RTS = Request To Send
 RTOS = Real-time Operating System
 	- an OS intended to serve real-time applications that process data as it comes in, typically without buffer delays
+	- time bound system with fixed time constraints for processing
+	- either event driven or time sharing
+		- Event drive: switch btwn tasks based on priorities
+		- Time sharing: switch the task based on clock interrupts
+	- most use pre-emptive scheduling algorithm
+	- "hard" RTOS has less jitter than "soft" RTOS
+		- soft can reach a deadline
+		- hard can reach a deadline deterministically
+	- chief design goal is guarantee of hard/soft performance, not throughput
+	- key factors:
+		- minimal interrupt latency
+		- minimal thread switching latency
+		- valued for quickness/predictability of response, not amount of work that can be done
 _S_
 S-Bus
 	- a computer bus system used in most SPARC(RISC) based computers during the 90s
@@ -524,6 +579,11 @@ STR = Synchronous Transmit-Receive
 _T_
 TIV = Time-Invariant System
 	- a time-invariant system has a time-dependent system function that is not a direct function of time
+Tristate (PIN)
+	- state of high impedance
+	- used when multiple output devices shared a bus
+		- only selected chip will have active outputs (high/low)
+		- other chips will have outputs set as high impedance
 _U_
 UART = Universal Asynchronous Receiver-Transmitter
 	- computer hardware device for asynchronous serial communication
